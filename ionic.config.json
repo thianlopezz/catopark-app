@@ -1,0 +1,7 @@
+{
+  "name": "cato-park-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
