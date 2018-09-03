@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-buttons end>
+      <button ion-button round outline (click)="info()">
+        <ion-icon name="information"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo" text-center>
+    <img src="assets/imgs/cato.png" />
+  </div>
+  <div padding>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input [(ngModel)]="model.usuario" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input [(ngModel)]="model.contrasena" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button (click)="login()" color="secondary" ion-button block>Iniciar sesión</button>
+  </div>
+</ion-content>

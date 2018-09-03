@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Usuario</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div *ngIf="parker">
+    <div text-center>
+      <ion-icon name="contact" class="img">
+      </ion-icon>
+    </div>
+    <ion-card>
+      <ion-card-content>
+        <p>{{parker.nombre}}</p>
+        <p>{{parker.correo}}</p>
+      </ion-card-content>
+      <button (click)="cerrarSesion()" color="danger" ion-button full>Cerrar sesión</button>
+    </ion-card>
+  </div>
+</ion-content>

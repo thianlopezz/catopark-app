@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Nueva notificación</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="paso==1">
+    <ion-searchbar [placeholder]="'Placa'" [(ngModel)]="placa" (ionInput)="onInputSearch($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <p *ngIf="placa===''" text-center>Ingresa la placa del vehículo.</p>
+    <p *ngIf="placa!=='' && vehiculosFiltrados.length===0" text-center>No se encontraron resultados.</p>
+    <ion-list>
+      <button ion-item *ngFor="let vehiculo of vehiculosFiltrados" (click)="onSelect(vehiculo)">
+        {{ vehiculo.placa }}
+      </button>
+    </ion-list>
+  </div>
+
+  <div *ngIf="paso==2">
+    <h1>
+      {{vehiculo.placa}}
+      <small>{{vehiculo.tipoVehiculo}}</small>
+    </h1>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Notificacion</ion-label>
+        <ion-textarea [(ngModel)]="model.notificacion" type="text"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer *ngIf="paso===1 && model.idVehiculo">
+  <ion-toolbar>
+    <p ion-text color="light">{{vehiculo.placa}}</p>
+    <ion-buttons end>
+      <button ion-button icon-end color="secondary" (click)="onSiguiente()">
+        Siguiente
+        <ion-icon name="arrow-round-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer *ngIf="paso===2">
+  <ion-toolbar>
+    <p ion-text color="light" text-nowrap>{{ocupantesFormat}}</p>
+    <ion-buttons end>
+      <button ion-button icon-end color="secondary" (click)="enviarNotificacion()">
+        Enviar
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

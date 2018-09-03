@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>    
+    <ion-title>Notificaciones</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div style="width:100%" text-center>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+  </div>  
+  <p *ngIf="!loading && notificaciones.length===0" text-center>No has enviado notificaciones.</p>
+  <ion-card *ngFor="let notificacion of notificaciones">
+    <ion-card-header>
+      {{notificacion.placa}}
+    </ion-card-header>
+    <ion-card-content>
+      {{notificacion.notificacion}}
+      <p text-right>{{notificacion.estadoFormat}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button color="secondary" (click)="nuevaNotificacion()" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
